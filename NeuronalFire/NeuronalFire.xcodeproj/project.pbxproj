@@ -1,0 +1,664 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		535E48A92C815925005C241F /* NeuronalFireApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48A82C815925005C241F /* NeuronalFireApp.swift */; };
+		535E48AB2C815925005C241F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48AA2C815925005C241F /* ContentView.swift */; };
+		535E48AD2C815925005C241F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48AC2C815925005C241F /* Item.swift */; };
+		535E48AF2C815926005C241F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 535E48AE2C815926005C241F /* Assets.xcassets */; };
+		535E48B32C815926005C241F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 535E48B22C815926005C241F /* Preview Assets.xcassets */; };
+		535E48BD2C815926005C241F /* NeuronalFireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48BC2C815926005C241F /* NeuronalFireTests.swift */; };
+		535E48C72C815926005C241F /* NeuronalFireUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48C62C815926005C241F /* NeuronalFireUITests.swift */; };
+		535E48C92C815926005C241F /* NeuronalFireUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48C82C815926005C241F /* NeuronalFireUITestsLaunchTests.swift */; };
+		535E48D62C81598A005C241F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48D52C815989005C241F /* Home.swift */; };
+		535E48DA2C8159EB005C241F /* PatientAssessmentGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48D92C8159E8005C241F /* PatientAssessmentGuide.swift */; };
+		535E48DD2C815A20005C241F /* GCSCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48DC2C815A1C005C241F /* GCSCalculator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		535E48B92C815926005C241F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 535E489D2C815925005C241F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 535E48A42C815925005C241F;
+			remoteInfo = NeuronalFire;
+		};
+		535E48C32C815926005C241F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 535E489D2C815925005C241F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 535E48A42C815925005C241F;
+			remoteInfo = NeuronalFire;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		535E48A52C815925005C241F /* NeuronalFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeuronalFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		535E48A82C815925005C241F /* NeuronalFireApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuronalFireApp.swift; sourceTree = "<group>"; };
+		535E48AA2C815925005C241F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		535E48AC2C815925005C241F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		535E48AE2C815926005C241F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		535E48B02C815926005C241F /* NeuronalFire.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeuronalFire.entitlements; sourceTree = "<group>"; };
+		535E48B22C815926005C241F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		535E48B82C815926005C241F /* NeuronalFireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeuronalFireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		535E48BC2C815926005C241F /* NeuronalFireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuronalFireTests.swift; sourceTree = "<group>"; };
+		535E48C22C815926005C241F /* NeuronalFireUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeuronalFireUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		535E48C62C815926005C241F /* NeuronalFireUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuronalFireUITests.swift; sourceTree = "<group>"; };
+		535E48C82C815926005C241F /* NeuronalFireUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuronalFireUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		535E48D52C815989005C241F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		535E48D92C8159E8005C241F /* PatientAssessmentGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAssessmentGuide.swift; sourceTree = "<group>"; };
+		535E48DC2C815A1C005C241F /* GCSCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCSCalculator.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		535E48A22C815925005C241F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		535E48B52C815926005C241F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		535E48BF2C815926005C241F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		535E489C2C815925005C241F = {
+			isa = PBXGroup;
+			children = (
+				535E48A72C815925005C241F /* NeuronalFire */,
+				535E48BB2C815926005C241F /* NeuronalFireTests */,
+				535E48C52C815926005C241F /* NeuronalFireUITests */,
+				535E48A62C815925005C241F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		535E48A62C815925005C241F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				535E48A52C815925005C241F /* NeuronalFire.app */,
+				535E48B82C815926005C241F /* NeuronalFireTests.xctest */,
+				535E48C22C815926005C241F /* NeuronalFireUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		535E48A72C815925005C241F /* NeuronalFire */ = {
+			isa = PBXGroup;
+			children = (
+				535E48D72C8159D6005C241F /* Pages */,
+				535E48D52C815989005C241F /* Home.swift */,
+				535E48A82C815925005C241F /* NeuronalFireApp.swift */,
+				535E48AA2C815925005C241F /* ContentView.swift */,
+				535E48AC2C815925005C241F /* Item.swift */,
+				535E48AE2C815926005C241F /* Assets.xcassets */,
+				535E48B02C815926005C241F /* NeuronalFire.entitlements */,
+				535E48B12C815926005C241F /* Preview Content */,
+			);
+			path = NeuronalFire;
+			sourceTree = "<group>";
+		};
+		535E48B12C815926005C241F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				535E48B22C815926005C241F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		535E48BB2C815926005C241F /* NeuronalFireTests */ = {
+			isa = PBXGroup;
+			children = (
+				535E48BC2C815926005C241F /* NeuronalFireTests.swift */,
+			);
+			path = NeuronalFireTests;
+			sourceTree = "<group>";
+		};
+		535E48C52C815926005C241F /* NeuronalFireUITests */ = {
+			isa = PBXGroup;
+			children = (
+				535E48C62C815926005C241F /* NeuronalFireUITests.swift */,
+				535E48C82C815926005C241F /* NeuronalFireUITestsLaunchTests.swift */,
+			);
+			path = NeuronalFireUITests;
+			sourceTree = "<group>";
+		};
+		535E48D72C8159D6005C241F /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				535E48DB2C815A15005C241F /* GCSCalculator */,
+				535E48D82C8159E1005C241F /* PatientAssessment */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		535E48D82C8159E1005C241F /* PatientAssessment */ = {
+			isa = PBXGroup;
+			children = (
+				535E48D92C8159E8005C241F /* PatientAssessmentGuide.swift */,
+			);
+			path = PatientAssessment;
+			sourceTree = "<group>";
+		};
+		535E48DB2C815A15005C241F /* GCSCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				535E48DC2C815A1C005C241F /* GCSCalculator.swift */,
+			);
+			path = GCSCalculator;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		535E48A42C815925005C241F /* NeuronalFire */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 535E48CC2C815926005C241F /* Build configuration list for PBXNativeTarget "NeuronalFire" */;
+			buildPhases = (
+				535E48A12C815925005C241F /* Sources */,
+				535E48A22C815925005C241F /* Frameworks */,
+				535E48A32C815925005C241F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NeuronalFire;
+			productName = NeuronalFire;
+			productReference = 535E48A52C815925005C241F /* NeuronalFire.app */;
+			productType = "com.apple.product-type.application";
+		};
+		535E48B72C815926005C241F /* NeuronalFireTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 535E48CF2C815926005C241F /* Build configuration list for PBXNativeTarget "NeuronalFireTests" */;
+			buildPhases = (
+				535E48B42C815926005C241F /* Sources */,
+				535E48B52C815926005C241F /* Frameworks */,
+				535E48B62C815926005C241F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				535E48BA2C815926005C241F /* PBXTargetDependency */,
+			);
+			name = NeuronalFireTests;
+			productName = NeuronalFireTests;
+			productReference = 535E48B82C815926005C241F /* NeuronalFireTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		535E48C12C815926005C241F /* NeuronalFireUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 535E48D22C815926005C241F /* Build configuration list for PBXNativeTarget "NeuronalFireUITests" */;
+			buildPhases = (
+				535E48BE2C815926005C241F /* Sources */,
+				535E48BF2C815926005C241F /* Frameworks */,
+				535E48C02C815926005C241F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				535E48C42C815926005C241F /* PBXTargetDependency */,
+			);
+			name = NeuronalFireUITests;
+			productName = NeuronalFireUITests;
+			productReference = 535E48C22C815926005C241F /* NeuronalFireUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		535E489D2C815925005C241F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					535E48A42C815925005C241F = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					535E48B72C815926005C241F = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 535E48A42C815925005C241F;
+					};
+					535E48C12C815926005C241F = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 535E48A42C815925005C241F;
+					};
+				};
+			};
+			buildConfigurationList = 535E48A02C815925005C241F /* Build configuration list for PBXProject "NeuronalFire" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 535E489C2C815925005C241F;
+			productRefGroup = 535E48A62C815925005C241F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				535E48A42C815925005C241F /* NeuronalFire */,
+				535E48B72C815926005C241F /* NeuronalFireTests */,
+				535E48C12C815926005C241F /* NeuronalFireUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		535E48A32C815925005C241F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				535E48B32C815926005C241F /* Preview Assets.xcassets in Resources */,
+				535E48AF2C815926005C241F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		535E48B62C815926005C241F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		535E48C02C815926005C241F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		535E48A12C815925005C241F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				535E48AB2C815925005C241F /* ContentView.swift in Sources */,
+				535E48AD2C815925005C241F /* Item.swift in Sources */,
+				535E48D62C81598A005C241F /* Home.swift in Sources */,
+				535E48DD2C815A20005C241F /* GCSCalculator.swift in Sources */,
+				535E48DA2C8159EB005C241F /* PatientAssessmentGuide.swift in Sources */,
+				535E48A92C815925005C241F /* NeuronalFireApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		535E48B42C815926005C241F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				535E48BD2C815926005C241F /* NeuronalFireTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		535E48BE2C815926005C241F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				535E48C92C815926005C241F /* NeuronalFireUITestsLaunchTests.swift in Sources */,
+				535E48C72C815926005C241F /* NeuronalFireUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		535E48BA2C815926005C241F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 535E48A42C815925005C241F /* NeuronalFire */;
+			targetProxy = 535E48B92C815926005C241F /* PBXContainerItemProxy */;
+		};
+		535E48C42C815926005C241F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 535E48A42C815925005C241F /* NeuronalFire */;
+			targetProxy = 535E48C32C815926005C241F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		535E48CA2C815926005C241F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		535E48CB2C815926005C241F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		535E48CD2C815926005C241F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NeuronalFire/NeuronalFire.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NeuronalFire/Preview Content\"";
+				DEVELOPMENT_TEAM = 6DT7L2N5X6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yegcollective.NeuronalFire;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		535E48CE2C815926005C241F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NeuronalFire/NeuronalFire.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NeuronalFire/Preview Content\"";
+				DEVELOPMENT_TEAM = 6DT7L2N5X6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yegcollective.NeuronalFire;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		535E48D02C815926005C241F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6DT7L2N5X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yegcollective.NeuronalFireTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NeuronalFire.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NeuronalFire";
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		535E48D12C815926005C241F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6DT7L2N5X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yegcollective.NeuronalFireTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NeuronalFire.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NeuronalFire";
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		535E48D32C815926005C241F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6DT7L2N5X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yegcollective.NeuronalFireUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = NeuronalFire;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		535E48D42C815926005C241F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6DT7L2N5X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yegcollective.NeuronalFireUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = NeuronalFire;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		535E48A02C815925005C241F /* Build configuration list for PBXProject "NeuronalFire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				535E48CA2C815926005C241F /* Debug */,
+				535E48CB2C815926005C241F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		535E48CC2C815926005C241F /* Build configuration list for PBXNativeTarget "NeuronalFire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				535E48CD2C815926005C241F /* Debug */,
+				535E48CE2C815926005C241F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		535E48CF2C815926005C241F /* Build configuration list for PBXNativeTarget "NeuronalFireTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				535E48D02C815926005C241F /* Debug */,
+				535E48D12C815926005C241F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		535E48D22C815926005C241F /* Build configuration list for PBXNativeTarget "NeuronalFireUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				535E48D32C815926005C241F /* Debug */,
+				535E48D42C815926005C241F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 535E489D2C815925005C241F /* Project object */;
+}
