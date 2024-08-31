@@ -18,6 +18,7 @@
 		535E48D62C81598A005C241F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48D52C815989005C241F /* Home.swift */; };
 		535E48DA2C8159EB005C241F /* PatientAssessmentGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48D92C8159E8005C241F /* PatientAssessmentGuide.swift */; };
 		535E48DD2C815A20005C241F /* GCSCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48DC2C815A1C005C241F /* GCSCalculator.swift */; };
+		53621FD52C83A3F100CA4BF5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53621FD42C83A3F000CA4BF5 /* View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		535E48D52C815989005C241F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		535E48D92C8159E8005C241F /* PatientAssessmentGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAssessmentGuide.swift; sourceTree = "<group>"; };
 		535E48DC2C815A1C005C241F /* GCSCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCSCalculator.swift; sourceTree = "<group>"; };
+		53621FD42C83A3F000CA4BF5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		535E48A72C815925005C241F /* NeuronalFire */ = {
 			isa = PBXGroup;
 			children = (
+				53621FD32C83A3DC00CA4BF5 /* Overrides */,
 				535E48D72C8159D6005C241F /* Pages */,
 				535E48D52C815989005C241F /* Home.swift */,
 				535E48A82C815925005C241F /* NeuronalFireApp.swift */,
@@ -163,6 +166,14 @@
 				535E48DC2C815A1C005C241F /* GCSCalculator.swift */,
 			);
 			path = GCSCalculator;
+			sourceTree = "<group>";
+		};
+		53621FD32C83A3DC00CA4BF5 /* Overrides */ = {
+			isa = PBXGroup;
+			children = (
+				53621FD42C83A3F000CA4BF5 /* View.swift */,
+			);
+			path = Overrides;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +311,7 @@
 				535E48D62C81598A005C241F /* Home.swift in Sources */,
 				535E48DD2C815A20005C241F /* GCSCalculator.swift in Sources */,
 				535E48DA2C8159EB005C241F /* PatientAssessmentGuide.swift in Sources */,
+				53621FD52C83A3F100CA4BF5 /* View.swift in Sources */,
 				535E48A92C815925005C241F /* NeuronalFireApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
