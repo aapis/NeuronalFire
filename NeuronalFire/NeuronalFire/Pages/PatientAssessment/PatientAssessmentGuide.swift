@@ -379,7 +379,10 @@ struct PatientAssessment {
                     ]
                 ),
                 ScenarioSection(
-                    name: "Patient stability",
+                    name: "Critical situation?",
+                    requirements: [
+                        ScenarioRequirement(description: "Load/go or stay/stabilize?", importance: .critical),
+                    ],
                     decisionPointOngoingOrSecondaryChoices: ITLSSecondarySurveyType.allCases,
                     subSections: [
                         ScenarioSection(
@@ -789,6 +792,16 @@ struct PatientAssessment {
                             .background(.gray.opacity(0.6))
                         }
 
+                        ForEach(section.requirements) { req in
+                            HStack(alignment: .center) {
+                                Text(req.description)
+                                Spacer()
+                            }
+                            .padding(8)
+//                            .foregroundStyle(current.requirement == req.id ? .white : .gray)
+                            .background(current.requirement == req.id ? .blue : req.importance == .critical ? .yellow : .gray.opacity(0.4))
+                        }
+
                         if section.decisionPointRapidOrFocusedChoices != nil {
                             HStack(alignment: .center, spacing: 0) {
                                 ForEach(section.decisionPointRapidOrFocusedChoices!, id: \.self) { iType in
@@ -920,17 +933,15 @@ struct PatientAssessment {
                         }
                         .opacity(self.completed ? 0.5 : 1)
 
-                        if !section.subSections.isEmpty {
-                            ForEach(section.subSections, id: \.id) { subSection in
-                                HStack(alignment: .center, spacing: 1) {
-                                    Rectangle()
-                                        .foregroundStyle(type.colour)
-                                        .frame(width: 5)
-                                    SingleSection(section: subSection, current: $current, type: $type, open: open)
+                        ForEach(section.subSections, id: \.id) { subSection in
+                            HStack(alignment: .center, spacing: 1) {
+                                Rectangle()
+                                    .foregroundStyle(type.colour)
+                                    .frame(width: 5)
+                                SingleSection(section: subSection, current: $current, type: $type, open: open)
 
-                                }
-                                .opacity(self.completed ? 0.5 : 1)
                             }
+                            .opacity(self.completed ? 0.5 : 1)
                         }
                     }
                 }
