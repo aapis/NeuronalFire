@@ -30,7 +30,7 @@ struct PatientAssessment {
                 ScenarioSection(
                     name: "C-Spine",
                     requirements: [
-                        ScenarioRequirement(description: "Assess for C-Spine injury", importance: .normal, notes: "If needed, delegate holding C-Spine to partner"),
+                        ScenarioRequirement(description: "Have you fallen or hit your head recently?", importance: .normal, notes: "If needed, delegate holding C-Spine to partner"),
                     ]
                 ),
                 ScenarioSection(
