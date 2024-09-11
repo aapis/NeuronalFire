@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		532A32082C91F71F00728D5A /* PatientAssessmentViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532A32072C91F71F00728D5A /* PatientAssessmentViews.swift */; };
 		535E48A92C815925005C241F /* NeuronalFireApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48A82C815925005C241F /* NeuronalFireApp.swift */; };
 		535E48AB2C815925005C241F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48AA2C815925005C241F /* ContentView.swift */; };
 		535E48AD2C815925005C241F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48AC2C815925005C241F /* Item.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		532A32072C91F71F00728D5A /* PatientAssessmentViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAssessmentViews.swift; sourceTree = "<group>"; };
 		535E48A52C815925005C241F /* NeuronalFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeuronalFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		535E48A82C815925005C241F /* NeuronalFireApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuronalFireApp.swift; sourceTree = "<group>"; };
 		535E48AA2C815925005C241F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		532A32062C91F71000728D5A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				532A32072C91F71F00728D5A /* PatientAssessmentViews.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		535E489C2C815925005C241F = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 		535E48A72C815925005C241F /* NeuronalFire */ = {
 			isa = PBXGroup;
 			children = (
+				532A32062C91F71000728D5A /* Views */,
 				536B8E882C8FA654006722A6 /* Data */,
 				53621FD32C83A3DC00CA4BF5 /* Overrides */,
 				535E48D72C8159D6005C241F /* Pages */,
@@ -326,6 +337,7 @@
 				535E48DD2C815A20005C241F /* GCSCalculator.swift in Sources */,
 				535E48DA2C8159EB005C241F /* PatientAssessmentGuide.swift in Sources */,
 				536B8E8A2C8FA65D006722A6 /* PatientAssessment.swift in Sources */,
+				532A32082C91F71F00728D5A /* PatientAssessmentViews.swift in Sources */,
 				536B8E8C2C8FA9A5006722A6 /* Scenario.swift in Sources */,
 				53621FD52C83A3F100CA4BF5 /* View.swift in Sources */,
 				535E48A92C815925005C241F /* NeuronalFireApp.swift in Sources */,

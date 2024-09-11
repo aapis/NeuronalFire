@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct NeuronalFireApp: App {
+    @Environment(\.colorScheme) var colourScheme
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
