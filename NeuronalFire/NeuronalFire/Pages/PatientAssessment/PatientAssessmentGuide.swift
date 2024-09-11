@@ -12,7 +12,7 @@ struct PatientAssessmentGuide: View {
     typealias PAType = ScenarioType
     typealias Requirement = ScenarioRequirement
 
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) var colourScheme
     private let pa: PatientAssessment = PatientAssessment()
     @State private var current: Coordinates// = Coordinates()
     @State private var type: PAType = .medical
@@ -21,17 +21,19 @@ struct PatientAssessmentGuide: View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
                 Image(systemName: "stethoscope")
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(colourScheme == .dark ? .neuronalPurple.opacity(0.6) : .neuronalGreen.opacity(0.6))
                 Text("PA Guide")
                 Spacer()
             }
             .font(.largeTitle)
             .fontWeight(.bold)
             .padding([.leading, .top, .bottom])
+            .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+            .background(colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
 
-            HStack(alignment: .center, spacing: 0) {
+            HStack(alignment: .center, spacing: 8) {
                 ForEach(PAType.allCases, id: \.hashValue) { incidentType in
-                    HStack {
+                    HStack(alignment: .center, spacing: 1) {
                         Spacer()
                         Button {
                             self.type = incidentType
@@ -41,17 +43,21 @@ struct PatientAssessmentGuide: View {
                         }
                         Spacer()
                     }
-                    .background(self.type == incidentType ? incidentType.colour : .black.opacity(0.4))
+                    .foregroundStyle(.white)
+                    .background(self.type == incidentType ? (colourScheme == .dark ? .neuronalGreen : .neuronalPurple) : (colourScheme == .dark ? .neuronalGreen.opacity(0.3) : .neuronalPurple.opacity(0.3)))
+                    .clipShape(RoundedRectangle(cornerRadius: 3))
                 }
             }
+            .padding()
+            Divider()
 
             VStack(alignment: .leading, spacing: 0) {
                 PatientAssessment.Views.SectionList(pa: self.pa, current: $current, type: $type)
-//                    PrimaryAssessment.Views.Progress(pa: self.pa, current: $current)
-//                        .background(type.colour)
+                //                    PrimaryAssessment.Views.Progress(pa: self.pa, current: $current)
+                //                        .background(type.colour)
             }
         }
-        .foregroundStyle(colorScheme == .dark ? .white : .black)
+        .background(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
         .scrollDismissesKeyboard(.immediately)
 //        .toolbar()
     }
