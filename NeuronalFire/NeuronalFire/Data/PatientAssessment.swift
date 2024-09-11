@@ -86,7 +86,7 @@ struct PatientAssessment {
                                 ScenarioSection(
                                     name: "Head",
                                     requirements: [
-                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .normal),
+                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .critical),
                                         ScenarioRequirement(description: "Facial droop?", importance: .normal),
                                         ScenarioRequirement(description: "Eyes PERL?", importance: .normal)
                                     ]
@@ -94,7 +94,7 @@ struct PatientAssessment {
                                 ScenarioSection(
                                     name: "Neck",
                                     requirements: [
-                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .normal),
+                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .critical),
                                         ScenarioRequirement(description: "Accessory muscle use?", importance: .normal),
                                         ScenarioRequirement(description: "JVD?", importance: .normal),
                                         ScenarioRequirement(description: "Trachea midline?", importance: .normal),
@@ -104,16 +104,16 @@ struct PatientAssessment {
                                 ScenarioSection(
                                     name: "Chest",
                                     requirements: [
-                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .normal),
-                                        ScenarioRequirement(description: "Auscultate apics & bases for lung sounds", importance: .normal),
-                                        ScenarioRequirement(description: "Percuss. Adventitious sounds?", importance: .normal),
+                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .critical),
+                                        ScenarioRequirement(description: "Auscultate apics & bases for lung sounds", importance: .critical),
+                                        ScenarioRequirement(description: "If sounds decreased, percuss. Adventitious sounds?", importance: .normal),
                                         ScenarioRequirement(description: "SIMBA?", importance: .normal)
                                     ]
                                 ),
                                 ScenarioSection(
                                     name: "Abdomen",
                                     requirements: [
-                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .normal),
+                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .critical),
                                         ScenarioRequirement(description: "Feeling for DRT in all quadrants", importance: .normal),
                                         ScenarioRequirement(description: "Nauseaous/recently vomited?", importance: .normal),
                                         ScenarioRequirement(description: "Scars or needle marks?", importance: .normal),
@@ -122,14 +122,14 @@ struct PatientAssessment {
                                 ScenarioSection(
                                     name: "Pelvis",
                                     requirements: [
-                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .normal),
+                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .critical),
                                         ScenarioRequirement(description: "Incontinence, bleeding, or discharge?", importance: .normal),
                                     ]
                                 ),
                                 ScenarioSection(
                                     name: "Lower extremities",
                                     requirements: [
-                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .normal),
+                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .critical),
                                         ScenarioRequirement(description: "Needle marks or medic alert jewelry?", importance: .normal),
                                         ScenarioRequirement(description: "Edema/discolouration?", importance: .normal),
                                         ScenarioRequirement(description: "CMS, test both simultaneously", importance: .normal)
@@ -138,7 +138,7 @@ struct PatientAssessment {
                                 ScenarioSection(
                                     name: "Upper extremities",
                                     requirements: [
-                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .normal),
+                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .critical),
                                         ScenarioRequirement(description: "Needle marks or medic alert jewelry?", importance: .normal),
                                         ScenarioRequirement(description: "Edema/discolouration?", importance: .normal),
                                         ScenarioRequirement(description: "CMS, test both simultaneously", importance: .normal)
@@ -147,7 +147,7 @@ struct PatientAssessment {
                                 ScenarioSection(
                                     name: "Back",
                                     requirements: [
-                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .normal),
+                                        ScenarioRequirement(description: "Looking & feeling for injuries or pain", importance: .critical),
                                         ScenarioRequirement(description: "Sacral edema/scars?", importance: .normal)
                                     ]
                                 ),
