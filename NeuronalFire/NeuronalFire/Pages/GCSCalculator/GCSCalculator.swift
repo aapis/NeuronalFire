@@ -34,6 +34,7 @@ struct GCSBehaviourResponse: Identifiable {
 
 struct GCSCalculator: View {
     @State private var score: Int = 0
+    @Environment(\.colorScheme) var colourScheme
 
     var body: some View {
         VStack(alignment: .leading, spacing: 1) {
@@ -44,6 +45,7 @@ struct GCSCalculator: View {
                 }
             }
             .padding()
+            .background(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
         }
         .scrollDismissesKeyboard(.immediately)
     }
@@ -127,7 +129,7 @@ struct GCSCalculator: View {
                                 }
                                 .padding(8)
                                 .foregroundStyle(self.isSelected(resp) ? .white : .gray)
-                                .background(self.isSelected(resp) ? .blue : .gray)
+                                .background(self.isSelected(resp) ? .blue : .white)
                             }
                         }
 
