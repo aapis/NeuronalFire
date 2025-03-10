@@ -146,7 +146,7 @@ struct GCSCalculator: View {
         var body: some View {
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
-                    Text("GCS")
+                    Text("GCS Calculator")
                         .font(.title)
                         .bold()
                     Spacer()
