@@ -37,7 +37,7 @@ struct GCSCalculator: View {
     @Environment(\.colorScheme) var colourScheme
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 1) {
+        VStack(alignment: .leading, spacing: 0) {
             Scoreboard(score: $score)
             ZStack(alignment: .topLeading) {
                 ScrollView(showsIndicators: false) {
@@ -146,20 +146,14 @@ struct GCSCalculator: View {
         var body: some View {
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
-                    Text("Glasgow Coma Score")
-                        .font(.title2)
+                    Text("GCS")
+                        .font(.title)
                         .bold()
                     Spacer()
                     Image(systemName: "\(self.score).circle")
                         .font(.title)
                 }
                 .padding()
-
-                ZStack(alignment: .topLeading) {
-                    Color.blue
-                    LinearGradient(colors: [.black.opacity(0.2), .clear], startPoint: .top, endPoint: .bottom)
-                }
-                .frame(height: 10)
             }
             .background(self.score == 0 ? .gray : self.score < 9 ? .red : self.score < 15 ? .orange : .green)
         }
