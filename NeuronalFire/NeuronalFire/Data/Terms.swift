@@ -7,18 +7,30 @@
 
 import SwiftUI
 
-struct Acronym: Identifiable {
+struct Acronym: Identifiable, Comparable {
     var id: UUID = UUID()
     var short: String
     var long: String
     var definition: String?
+    var variants: [Acronym] = []
+    
+    /// Less than
+    /// - Parameters:
+    ///   - lhs: First item
+    ///   - rhs: Second item
+    /// - Returns: Bool
+    static func < (lhs: Acronym, rhs: Acronym) -> Bool {
+        return lhs.short < rhs.short
+    }
 }
 
 struct Terms: View {
     @Environment(\.colorScheme) var colourScheme
     @State private var showSearch: Bool = true
     private let terms: [Acronym] = [
-        Acronym(short: "OPQRSTA", long: "Onset, Provocation, Quality, Region/Radiates, Severity, Time, Alleviates")
+        Acronym(short: "OPQRSTA", long: "Onset, Provocation, Quality, Region/Radiates, Severity, Time, Alleviates"),
+        Acronym(short: "ABC", long: "Airway, Breathing, Circulation"),
+        Acronym(short: "CABC", long: "Circulation, Airway, Breathing, Circulation"),
     ]
 
     var body: some View {
@@ -41,16 +53,19 @@ struct Terms: View {
             if self.showSearch {
                 Filter()
             }
-            VStack {
-                ForEach(self.terms) { term in
+            ScrollView {
+                ForEach(self.terms.sorted()) { term in
                     VStack(alignment: .leading) {
                         Text(term.short)
                             .bold()
                             .font(.title3)
-                        Text(term.long)
-                        Spacer()
+                        HStack {
+                            Text(term.long)
+                            Spacer()
+                        }
                     }
                 }
+                Spacer()
             }
             .padding()
         }
