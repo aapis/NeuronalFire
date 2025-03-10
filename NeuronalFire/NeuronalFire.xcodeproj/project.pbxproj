@@ -22,6 +22,9 @@
 		53621FD52C83A3F100CA4BF5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53621FD42C83A3F000CA4BF5 /* View.swift */; };
 		536B8E8A2C8FA65D006722A6 /* PatientAssessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536B8E892C8FA659006722A6 /* PatientAssessment.swift */; };
 		536B8E8C2C8FA9A5006722A6 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536B8E8B2C8FA9A3006722A6 /* Scenario.swift */; };
+		5383E2662D7F61D100B17F4F /* Acronyms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5383E2652D7F61CD00B17F4F /* Acronyms.swift */; };
+		5383E2682D7F61E600B17F4F /* Terms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5383E2672D7F61E300B17F4F /* Terms.swift */; };
+		5383E26B2D7F663500B17F4F /* PageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5383E26A2D7F662F00B17F4F /* PageHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		53621FD42C83A3F000CA4BF5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		536B8E892C8FA659006722A6 /* PatientAssessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAssessment.swift; sourceTree = "<group>"; };
 		536B8E8B2C8FA9A3006722A6 /* Scenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
+		5383E2652D7F61CD00B17F4F /* Acronyms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acronyms.swift; sourceTree = "<group>"; };
+		5383E2672D7F61E300B17F4F /* Terms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terms.swift; sourceTree = "<group>"; };
+		5383E26A2D7F662F00B17F4F /* PageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +168,8 @@
 		535E48D72C8159D6005C241F /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				5383E2692D7F662900B17F4F /* Shared */,
+				5383E2642D7F61B800B17F4F /* Acronyms */,
 				535E48DB2C815A15005C241F /* GCSCalculator */,
 				535E48D82C8159E1005C241F /* PatientAssessment */,
 			);
@@ -195,10 +203,27 @@
 		536B8E882C8FA654006722A6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5383E2672D7F61E300B17F4F /* Terms.swift */,
 				536B8E8B2C8FA9A3006722A6 /* Scenario.swift */,
 				536B8E892C8FA659006722A6 /* PatientAssessment.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		5383E2642D7F61B800B17F4F /* Acronyms */ = {
+			isa = PBXGroup;
+			children = (
+				5383E2652D7F61CD00B17F4F /* Acronyms.swift */,
+			);
+			path = Acronyms;
+			sourceTree = "<group>";
+		};
+		5383E2692D7F662900B17F4F /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5383E26A2D7F662F00B17F4F /* PageHeader.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,7 +290,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					535E48A42C815925005C241F = {
 						CreatedOnToolsVersion = 16.0;
@@ -333,10 +358,13 @@
 			files = (
 				535E48AB2C815925005C241F /* ContentView.swift in Sources */,
 				535E48AD2C815925005C241F /* Item.swift in Sources */,
+				5383E26B2D7F663500B17F4F /* PageHeader.swift in Sources */,
 				535E48D62C81598A005C241F /* Home.swift in Sources */,
 				535E48DD2C815A20005C241F /* GCSCalculator.swift in Sources */,
 				535E48DA2C8159EB005C241F /* PatientAssessmentGuide.swift in Sources */,
+				5383E2682D7F61E600B17F4F /* Terms.swift in Sources */,
 				536B8E8A2C8FA65D006722A6 /* PatientAssessment.swift in Sources */,
+				5383E2662D7F61D100B17F4F /* Acronyms.swift in Sources */,
 				532A32082C91F71F00728D5A /* PatientAssessmentViews.swift in Sources */,
 				536B8E8C2C8FA9A5006722A6 /* Scenario.swift in Sources */,
 				53621FD52C83A3F100CA4BF5 /* View.swift in Sources */,
@@ -411,6 +439,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -472,6 +501,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -499,6 +529,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeuronalFire/NeuronalFire.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NeuronalFire/Preview Content\"";
 				DEVELOPMENT_TEAM = 6DT7L2N5X6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -538,6 +569,7 @@
 				CODE_SIGN_ENTITLEMENTS = NeuronalFire/NeuronalFire.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NeuronalFire/Preview Content\"";
 				DEVELOPMENT_TEAM = 6DT7L2N5X6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -575,6 +607,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 6DT7L2N5X6;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -598,6 +631,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 6DT7L2N5X6;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -620,6 +654,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 6DT7L2N5X6;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -642,6 +677,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 6DT7L2N5X6;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;

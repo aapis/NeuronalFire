@@ -27,6 +27,17 @@ struct Home: View {
 
                 List {
                     NavigationLink {
+                        Terms()
+                    } label: {
+                        HStack(alignment: .center) {
+                            Image(systemName: "textformat.superscript")
+                                .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                            Text("Acronyms")
+                        }
+                    }
+                    .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
+
+                    NavigationLink {
                         GCSCalculator()
                     } label: {
                         HStack(alignment: .center) {
