@@ -19,18 +19,7 @@ struct PatientAssessmentGuide: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack {
-                Image(systemName: "stethoscope")
-                    .foregroundStyle(colourScheme == .dark ? .neuronalPurple.opacity(0.6) : .neuronalGreen.opacity(0.6))
-                Text("PA Guide")
-                Spacer()
-            }
-            .font(.largeTitle)
-            .fontWeight(.bold)
-            .padding([.leading, .top, .bottom])
-            .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
-            .background(colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
-
+            PageHeader(icon: "stethoscope", title: "PA Guide")
             HStack(alignment: .center, spacing: 8) {
                 ForEach(PAType.allCases, id: \.hashValue) { incidentType in
                     HStack(alignment: .center, spacing: 1) {
