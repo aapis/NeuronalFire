@@ -29,8 +29,13 @@ struct Terms: View {
     @State private var showSearch: Bool = true
     private let terms: [Acronym] = [
         Acronym(short: "OPQRSTA", long: "Onset, Provocation, Quality, Region/Radiates, Severity, Time, Alleviates"),
-        Acronym(short: "ABC", long: "Airway, Breathing, Circulation"),
-        Acronym(short: "CABC", long: "Circulation, Airway, Breathing, Circulation"),
+        Acronym(
+            short: "ABC",
+            long: "Airway, Breathing, Circulation",
+            variants: [
+                Acronym(short: "CABC", long: "Circulation, Airway, Breathing, Circulation")
+            ]
+        ),
     ]
 
     var body: some View {
@@ -63,6 +68,21 @@ struct Terms: View {
                             Text(term.long)
                             Spacer()
                         }
+                        
+                        if !term.variants.isEmpty {
+                            ForEach(term.variants.sorted()) { term in
+                                VStack {
+                                    Text(term.short)
+                                        .bold()
+                                        .font(.title3)
+                                    HStack {
+                                        Text(term.long)
+                                        Spacer()
+                                    }
+                                }
+                            }
+                            .padding([.leading, .trailing], 20)
+                        }
                     }
                 }
                 Spacer()
@@ -80,11 +100,13 @@ extension Terms {
 
         var body: some View {
             HStack(alignment: .top) {
-                TextField("Find", text: self.$filterTerm)
+                TextField("Filter terms...", text: self.$filterTerm)
             }
             .padding()
             .background(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
             .foregroundStyle(self.colourScheme == .dark ? .white : .neuronalPurple)
+            Divider()
+                .foregroundStyle(.neuronalPurple)
         }
     }
 }
