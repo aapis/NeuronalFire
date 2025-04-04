@@ -59,29 +59,25 @@ struct Terms: View {
                 Filter()
             }
             ScrollView {
-                ForEach(self.terms.sorted()) { term in
-                    VStack(alignment: .leading) {
-                        Text(term.short)
-                            .bold()
-                            .font(.title3)
-                        HStack {
+                VStack(alignment: .leading) {
+                    ForEach(self.terms.sorted()) { term in
+                        VStack(alignment: .leading) {
+                            Text(term.short)
+                                .bold()
+                                .font(.title3)
                             Text(term.long)
-                            Spacer()
-                        }
-                        
-                        if !term.variants.isEmpty {
-                            ForEach(term.variants.sorted()) { term in
-                                VStack {
-                                    Text(term.short)
-                                        .bold()
-                                        .font(.title3)
-                                    HStack {
+
+                            if !term.variants.isEmpty {
+                                ForEach(term.variants.sorted()) { term in
+                                    VStack(alignment: .leading) {
+                                        Text(term.short)
+                                            .bold()
+                                            .font(.title3)
                                         Text(term.long)
-                                        Spacer()
                                     }
                                 }
+                                .padding([.leading, .trailing])
                             }
-                            .padding([.leading, .trailing], 20)
                         }
                     }
                 }
