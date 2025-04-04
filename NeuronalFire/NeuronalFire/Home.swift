@@ -43,7 +43,18 @@ struct Home: View {
                         HStack(alignment: .center) {
                             Image(systemName: "function")
                                 .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
-                            Text("GCS Calculator")
+                            Text("GCS")
+                        }
+                    }
+                    .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
+
+                    NavigationLink {
+                        Medmath()
+                    } label: {
+                        HStack(alignment: .center) {
+                            Image(systemName: "function")
+                                .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                            Text("Medmath")
                         }
                     }
                     .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
