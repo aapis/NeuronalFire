@@ -146,15 +146,18 @@ struct GCSCalculator: View {
         var body: some View {
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
-                    Text("GCS Calculator")
-                        .font(.title)
-                        .bold()
+                    Image(systemName: "function")
+                        .foregroundStyle(.white.opacity(0.6))
+                    Text("GCS")
                     Spacer()
                     Image(systemName: "\(self.score).circle")
                         .font(.title)
                 }
                 .padding()
             }
+            .font(.largeTitle)
+            .fontWeight(.bold)
+            .foregroundStyle(.neuronalPurple)
             .background(self.score == 0 ? .gray : self.score < 9 ? .red : self.score < 15 ? .orange : .green)
         }
     }
