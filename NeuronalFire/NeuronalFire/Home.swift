@@ -26,49 +26,64 @@ struct Home: View {
                 .background(colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
 
                 List {
-                    NavigationLink {
-                        Terms()
-                    } label: {
-                        HStack(alignment: .center) {
-                            Image(systemName: "textformat.superscript")
-                                .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
-                            Text("Acronyms")
+                    Section("Reference") {
+                        NavigationLink {
+                            Terms()
+                        } label: {
+                            HStack(alignment: .center) {
+                                Image(systemName: "textformat.superscript")
+                                    .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                                Text("Acronyms")
+                            }
                         }
-                    }
-                    .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
+                        .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
 
-                    NavigationLink {
-                        GCSCalculator()
-                    } label: {
-                        HStack(alignment: .center) {
-                            Image(systemName: "function")
-                                .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
-                            Text("GCS")
+                        NavigationLink {
+                            PatientAssessmentGuide()
+                        } label: {
+                            HStack(alignment: .center) {
+                                Image(systemName: "stethoscope")
+                                    .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                                Text("Patient Assessment Guide")
+                            }
                         }
+                        .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
                     }
-                    .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
 
-                    NavigationLink {
-                        Medmath()
-                    } label: {
-                        HStack(alignment: .center) {
-                            Image(systemName: "function")
-                                .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
-                            Text("Medmath")
+                    Section("Calculators") {
+                        NavigationLink {
+                            GCSCalculator()
+                        } label: {
+                            HStack(alignment: .center) {
+                                Image(systemName: "function")
+                                    .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                                Text("GCS")
+                            }
                         }
-                    }
-                    .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
+                        .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
 
-                    NavigationLink {
-                        PatientAssessmentGuide()
-                    } label: {
-                        HStack(alignment: .center) {
-                            Image(systemName: "stethoscope")
-                                .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
-                            Text("Patient Assessment Guide")
+                        NavigationLink {
+                            LAMSCalculator()
+                        } label: {
+                            HStack(alignment: .center) {
+                                Image(systemName: "function")
+                                    .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                                Text("LAMS")
+                            }
                         }
+                        .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
+
+                        NavigationLink {
+                            Medmath()
+                        } label: {
+                            HStack(alignment: .center) {
+                                Image(systemName: "function")
+                                    .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                                Text("Medmath")
+                            }
+                        }
+                        .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
                     }
-                    .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
                 }
                 .background(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
                 .scrollContentBackground(.hidden)
