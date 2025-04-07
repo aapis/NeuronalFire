@@ -48,7 +48,7 @@ struct Medmath: View {
                             self.actionRecalculateResult()
                         }
                         .padding()
-                        .background(.neuronalPurple)
+                        .background(colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
 
@@ -60,7 +60,7 @@ struct Medmath: View {
                             self.actionRecalculateResult()
                         }
                         .padding()
-                        .background(.neuronalPurple)
+                        .background(colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
 #if os(iOS)
@@ -71,8 +71,9 @@ struct Medmath: View {
                             self.actionRecalculateResult()
                         }
                         .padding()
-                        .background(.neuronalPurple)
+                        .background(colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
 #if os(iOS)
                         .keyboardType(.decimalPad)
 #endif
@@ -90,7 +91,7 @@ struct Medmath: View {
                 .padding()
                 Spacer()
             }
-            .background(.neuronalGreen)
+            .background(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
         }
         .scrollDismissesKeyboard(.immediately)
     }
