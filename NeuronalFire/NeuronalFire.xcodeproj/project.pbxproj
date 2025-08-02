@@ -20,6 +20,7 @@
 		535E48DA2C8159EB005C241F /* PatientAssessmentGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48D92C8159E8005C241F /* PatientAssessmentGuide.swift */; };
 		535E48DD2C815A20005C241F /* GCSCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48DC2C815A1C005C241F /* GCSCalculator.swift */; };
 		53621FD52C83A3F100CA4BF5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53621FD42C83A3F000CA4BF5 /* View.swift */; };
+		536739E12E3C5FB400EA58C4 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536739E02E3C5FB100EA58C4 /* Calculator.swift */; };
 		536B8E8A2C8FA65D006722A6 /* PatientAssessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536B8E892C8FA659006722A6 /* PatientAssessment.swift */; };
 		536B8E8C2C8FA9A5006722A6 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536B8E8B2C8FA9A3006722A6 /* Scenario.swift */; };
 		5383E2662D7F61D100B17F4F /* Acronyms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5383E2652D7F61CD00B17F4F /* Acronyms.swift */; };
@@ -64,6 +65,7 @@
 		535E48D92C8159E8005C241F /* PatientAssessmentGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAssessmentGuide.swift; sourceTree = "<group>"; };
 		535E48DC2C815A1C005C241F /* GCSCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCSCalculator.swift; sourceTree = "<group>"; };
 		53621FD42C83A3F000CA4BF5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		536739E02E3C5FB100EA58C4 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		536B8E892C8FA659006722A6 /* PatientAssessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAssessment.swift; sourceTree = "<group>"; };
 		536B8E8B2C8FA9A3006722A6 /* Scenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
 		5383E2652D7F61CD00B17F4F /* Acronyms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acronyms.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 		536B8E882C8FA654006722A6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				536739E02E3C5FB100EA58C4 /* Calculator.swift */,
 				5383E2672D7F61E300B17F4F /* Terms.swift */,
 				536B8E8B2C8FA9A3006722A6 /* Scenario.swift */,
 				536B8E892C8FA659006722A6 /* PatientAssessment.swift */,
@@ -383,6 +386,7 @@
 				5383E26B2D7F663500B17F4F /* PageHeader.swift in Sources */,
 				535E48D62C81598A005C241F /* Home.swift in Sources */,
 				53F03DE02D9F7F5000F34041 /* Medmath.swift in Sources */,
+				536739E12E3C5FB400EA58C4 /* Calculator.swift in Sources */,
 				535E48DD2C815A20005C241F /* GCSCalculator.swift in Sources */,
 				535E48DA2C8159EB005C241F /* PatientAssessmentGuide.swift in Sources */,
 				5383E2682D7F61E600B17F4F /* Terms.swift in Sources */,

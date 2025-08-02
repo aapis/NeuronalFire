@@ -9,6 +9,32 @@ import SwiftUI
 
 struct Home: View {
     @Environment(\.colorScheme) var colourScheme
+    private var calculators: [Calculator] = [
+        Calculator(
+            label: "GCS",
+            view: AnyView(GCSCalculator())
+        ),
+        Calculator(
+            label: "LAMS",
+            view: AnyView(LAMSCalculator())
+        ),
+        Calculator(
+            label: "Medication Dose",
+            view: AnyView(Calculator.MedicationDoseView())
+        ),
+        Calculator(
+            label: "Drip Rate",
+            view: AnyView(Calculator.DripRateView())
+        ),
+        Calculator(
+            label: "Shock Index",
+            view: AnyView(Calculator.ShockIndexView())
+        ),
+        Calculator(
+            label: "LBS to KG",
+            view: AnyView(Calculator.PoundToKilosView())
+        )
+    ]
 
     var body: some View {
         NavigationStack {
@@ -51,47 +77,24 @@ struct Home: View {
                     }
 
                     Section("Calculators") {
-                        NavigationLink {
-                            GCSCalculator()
-                        } label: {
-                            HStack(alignment: .center) {
-                                Image(systemName: "function")
-                                    .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
-                                Text("GCS")
+                        ForEach(self.calculators) { calc in
+                            NavigationLink {
+                                calc.view
+                            } label: {
+                                HStack(alignment: .center) {
+                                    Image(systemName: calc.icon)
+                                        .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                                    Text(calc.label)
+                                }
                             }
+                            .listRowBackground(self.colourScheme == .dark ? Color.neuronalGreen : Color.white)
                         }
-                        .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
-
-                        NavigationLink {
-                            LAMSCalculator()
-                        } label: {
-                            HStack(alignment: .center) {
-                                Image(systemName: "function")
-                                    .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
-                                Text("LAMS")
-                            }
-                        }
-                        .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
-
-                        NavigationLink {
-                            Medmath()
-                        } label: {
-                            HStack(alignment: .center) {
-                                Image(systemName: "function")
-                                    .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
-                                Text("Medmath")
-                            }
-                        }
-                        .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
                     }
                 }
                 .background(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
                 .scrollContentBackground(.hidden)
             }
         }
-
-
 //        .toolbarBackground(.visible, for: .navigationBar)
-
     }
 }
