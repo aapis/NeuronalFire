@@ -27,6 +27,26 @@ enum Units: CaseIterable {
     }
 }
 
+enum DropSets: CaseIterable {
+    case d10, d20, d60
+    
+    var id: Double {
+        switch self {
+        case .d10: 10
+        case .d20: 20
+        case .d60: 60
+        }
+    }
+    
+    var label: String {
+        switch self {
+        case .d10: "10"
+        case .d20: "20"
+        case .d60: "60"
+        }
+    }
+}
+
 public struct Calculator: Identifiable {
     public var id: UUID = UUID()
     var label: String
@@ -132,13 +152,172 @@ public struct Calculator: Identifiable {
     
     struct DripRateView: View {
         @Environment(\.colorScheme) var colourScheme
+        @State private var gttsPerMin: Double = 0
+        @State private var gttsPerMinStr: String = "" // @TODO: make obsolete by implementing a TextField that supports Ints
+        @State private var min: Double = 0
+        @State private var minStr: String = "" // @TODO: make obsolete by implementing a TextField that supports Ints
+        @State private var gttsPerMl: Double = 0
+        @State private var gttsPerMlStr: String = "" // @TODO: make obsolete by implementing a TextField that supports Ints
+        @State private var ml: Double = 0
+        @State private var mlStr: String = ""
+        @State private var resultLeft: Double = 0
+        @State private var resultRight: Double = 0
+        @State private var dripRate: Double = 0
+        @State private var calculationSteps: [Line] = [
+            Line(text: "gtts/min * min = gtts/mL * mL")
+        ]
+        @State private var calculationLeft: [Line] = []
+        @State private var calculationRight: [Line] = []
+        @State private var selectedDropSet: DropSets = .d10
+        @FocusState private var focused: Bool
 
         var body: some View {
             VStack(alignment: .leading, spacing: 0) {
                 PageHeader(icon: "function", title: "Drip Rate")
-                Spacer()
+                Screen(left: self.$calculationLeft, right: self.$calculationRight, dripRate: self.$dripRate)
+                ScrollView(.vertical) {
+                    VStack(spacing: 20) {
+                        HStack {
+                            TextField("", text: self.$gttsPerMinStr, prompt: Text("gtts/min").foregroundStyle(.gray))
+                                .onChange(of: self.gttsPerMinStr) {
+                                    self.actionRecalculateLeft()
+                                }
+                                .padding()
+                                .background(self.colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+#if os(iOS)
+                                .keyboardType(.numberPad)
+#endif
+                            Image(systemName: "xmark")
+                                .font(.headline)
+                            TextField("", text: self.$minStr, prompt: Text("min").foregroundStyle(.gray))
+                                .onChange(of: self.minStr) {
+                                    self.actionRecalculateLeft()
+                                }
+                                .padding()
+                                .background(self.colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+#if os(iOS)
+                                .keyboardType(.numberPad)
+#endif
+                        }
+                        HStack {
+                            Spacer()
+                            Image(systemName: "equal")
+                                .font(.title)
+                            Spacer()
+                        }
+                        HStack {
+                            HStack {
+                                Picker("Drop Set", selection: self.$selectedDropSet) {
+                                    ForEach(DropSets.allCases, id: \.self) { type in
+                                        Text(type.label).tag(type.id)
+                                    }
+                                }
+                                .onChange(of: self.selectedDropSet) {
+                                    self.actionRecalculate()
+                                }
+                                .foregroundStyle(.white)
+                                Spacer()
+                            }
+
+                            Image(systemName: "xmark")
+                                .font(.headline)
+                            TextField("", text: self.$mlStr, prompt: Text("mL").foregroundStyle(.gray))
+                                .onChange(of: self.mlStr) {
+                                    self.dripRate = 0
+                                    self.actionRecalculateRight()
+                                }
+                                .padding()
+                                .background(self.colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+#if os(iOS)
+                                .keyboardType(.numberPad)
+#endif
+                        }
+                        
+                        Button {
+                            self.actionRecalculate()
+                        } label: {
+                            HStack(alignment: .top) {
+                                Spacer()
+                                Text("Calculate")
+                                Spacer()
+                            }
+                            .padding()
+                            .background(.green)
+                            .bold()
+                            .foregroundStyle(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .shadow(radius: 3, y: 3)
+                        }
+                    }
+                    .padding()
+                    Spacer()
+                }
+                .scrollDismissesKeyboard(.immediately)
             }
             .background(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+            .onAppear(perform: self.actionOnAppear)
+        }
+        
+        struct Line: Identifiable {
+            var id: UUID = UUID()
+            var text: String
+        }
+        
+        struct Screen: View {
+            @Environment(\.colorScheme) var colourScheme
+            @Binding public var left: [Line]
+            @Binding public var right: [Line]
+            @Binding public var dripRate: Double
+
+            var body: some View {
+                VStack(alignment: .trailing) {
+                    HStack {
+                        Text("FORMULA")
+                            .font(.caption)
+                        Spacer()
+                        Text(
+                            String(
+                                format: "%@ = %@",
+                                self.left.last?.text ?? "gtts/min * min",
+                                self.right.last?.text ?? "gtts/mL * mL"
+                            )
+                        )
+                    }
+                    
+                    if self.dripRate > 0 {
+                        HStack {
+                            Text("DRIP RATE")
+                                .font(.caption)
+                            Spacer()
+                            Text(String(format: "%.0f/min", self.dripRate))
+                        }
+                        .foregroundStyle(.yellow)
+                        
+                        HStack {
+                            Spacer()
+                            Text(String(format: "%.1f/15s", self.dripRate / 4))
+                        }
+                        .foregroundStyle(.yellow)
+                        
+                        if (self.dripRate / 60) > 1 {
+                            HStack {
+                                Spacer()
+                                Text(String(format: "%.1f/sec", self.dripRate / 60))
+                            }
+                            .foregroundStyle(.yellow)
+                        }
+                    }
+                }
+                .padding()
+                .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                .background(self.colourScheme == .dark ? .neuronalGreen.opacity(0.6) : .neuronalPurple.opacity(0.6))
+            }
         }
     }
     
@@ -392,6 +571,60 @@ extension Calculator.PoundToKilosView {
             let pct = half * 0.1
             self.kilograms = half - pct
             self.pounds = dWeight
+        }
+    }
+}
+
+extension Calculator.DripRateView {
+    /// Fires on load
+    /// - Returns: Void
+    private func actionOnAppear() -> Void {
+        self.focused = true
+    }
+
+    /// Calculates drip rate
+    /// - Returns: Void
+    private func actionRecalculateLeft() -> Void {
+        if let dGttsPerMin = Double(self.gttsPerMinStr) {
+            self.gttsPerMin = dGttsPerMin
+        }
+        
+        if let dMin = Double(self.minStr) {
+            self.min = dMin
+        }
+    
+        if self.gttsPerMin > 0 && self.min > 0 {
+            self.calculationLeft.append(Line(text: String(format: "%.0f * %.0f", self.gttsPerMin, self.min)))
+        } else if self.min > 0 {
+            self.calculationLeft.append(Line(text: String(format: "gtts/min * %.0f", self.min)))
+        }
+    }
+    
+    /// Calculates drip rate
+    /// - Returns: Void
+    private func actionRecalculateRight() -> Void {
+        if let dMl = Double(self.mlStr) {
+            self.ml = dMl
+        }
+        
+        if self.ml > 0 {
+            self.calculationRight.append(Line(text: String(format: "%.0f * %.0f", self.selectedDropSet.id, self.ml)))
+        }
+    }
+    
+    /// Calculates drip rate
+    /// - Returns: Void
+    private func actionRecalculate() -> Void {
+        if self.min > 0 {
+            self.resultLeft = self.min
+        }
+        
+        if self.ml > 0 {
+            self.resultRight = self.selectedDropSet.id * self.ml
+        }
+        
+        if self.min > 0 && self.ml > 0 {
+            self.dripRate = self.resultRight / self.resultLeft
         }
     }
 }
