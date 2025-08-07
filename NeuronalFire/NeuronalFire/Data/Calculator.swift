@@ -40,9 +40,9 @@ enum DropSets: CaseIterable {
     
     var label: String {
         switch self {
-        case .d10: "10"
-        case .d20: "20"
-        case .d60: "60"
+        case .d10: "10 gtts"
+        case .d20: "20 gtts"
+        case .d60: "60 gtts"
         }
     }
 }
@@ -170,6 +170,7 @@ public struct Calculator: Identifiable {
         @State private var calculationRight: [Line] = []
         @State private var selectedDropSet: DropSets = .d10
         @FocusState private var focused: Bool
+        private var columns: [GridItem] { return Array(repeating: GridItem(.adaptive(minimum: 200, maximum: 200), spacing: 1), count: 3) }
 
         var body: some View {
             VStack(alignment: .leading, spacing: 0) {
@@ -177,31 +178,39 @@ public struct Calculator: Identifiable {
                 Screen(left: self.$calculationLeft, right: self.$calculationRight, dripRate: self.$dripRate)
                 ScrollView(.vertical) {
                     VStack(spacing: 20) {
-                        HStack {
-                            TextField("", text: self.$gttsPerMinStr, prompt: Text("gtts/min").foregroundStyle(.gray))
-                                .onChange(of: self.gttsPerMinStr) {
-                                    self.actionRecalculateLeft()
-                                }
-                                .padding()
-                                .background(self.colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                        LazyVGrid(columns: self.columns) {
+                            VStack(alignment: .leading) {
+                                Text("gtts/min")
+                                    .font(.caption)
+                                TextField("", text: self.$gttsPerMinStr, prompt: Text("gtts/min").foregroundStyle(.gray))
+                                    .onChange(of: self.gttsPerMinStr) {
+                                        self.actionRecalculateLeft()
+                                    }
+                                    .padding()
+                                    .background(self.colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .foregroundStyle(self.dripRate > 0 ? .yellow : self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
 #if os(iOS)
-                                .keyboardType(.numberPad)
+                                    .keyboardType(.numberPad)
 #endif
+                            }
                             Image(systemName: "xmark")
                                 .font(.headline)
-                            TextField("", text: self.$minStr, prompt: Text("min").foregroundStyle(.gray))
-                                .onChange(of: self.minStr) {
-                                    self.actionRecalculateLeft()
-                                }
-                                .padding()
-                                .background(self.colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                            VStack(alignment: .leading) {
+                                Text("min")
+                                    .font(.caption)
+                                TextField("", text: self.$minStr, prompt: Text("min").foregroundStyle(.gray))
+                                    .onChange(of: self.minStr) {
+                                        self.actionRecalculateLeft()
+                                    }
+                                    .padding()
+                                    .background(self.colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
 #if os(iOS)
-                                .keyboardType(.numberPad)
+                                    .keyboardType(.numberPad)
 #endif
+                            }
                         }
                         HStack {
                             Spacer()
@@ -209,50 +218,84 @@ public struct Calculator: Identifiable {
                                 .font(.title)
                             Spacer()
                         }
-                        HStack {
-                            HStack {
-                                Picker("Drop Set", selection: self.$selectedDropSet) {
-                                    ForEach(DropSets.allCases, id: \.self) { type in
-                                        Text(type.label).tag(type.id)
+                        LazyVGrid(columns: self.columns) {
+                            VStack(alignment: .leading) {
+                                Text("Drop set")
+                                    .font(.caption)
+                                HStack {
+                                    Picker("Drop Set", selection: self.$selectedDropSet) {
+                                        ForEach(DropSets.allCases, id: \.self) { type in
+                                            Text(type.label).tag(type.id)
+                                        }
                                     }
+                                    .multilineTextAlignment(.leading)
+                                    .padding([.top, .bottom], 10)
+                                    .background(self.colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .onChange(of: self.selectedDropSet) {
+                                        self.actionRecalculate()
+                                    }
+                                    Spacer()
                                 }
-                                .onChange(of: self.selectedDropSet) {
-                                    self.actionRecalculate()
-                                }
-                                .foregroundStyle(.white)
-                                Spacer()
+                                .tint(self.colourScheme == .dark ? .white : .neuronalGreen)
                             }
 
                             Image(systemName: "xmark")
                                 .font(.headline)
-                            TextField("", text: self.$mlStr, prompt: Text("mL").foregroundStyle(.gray))
-                                .onChange(of: self.mlStr) {
-                                    self.dripRate = 0
-                                    self.actionRecalculateRight()
-                                }
-                                .padding()
-                                .background(self.colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                            VStack(alignment: .leading) {
+                                Text("mL")
+                                    .font(.caption)
+                                TextField("", text: self.$mlStr, prompt: Text("mL").foregroundStyle(.gray))
+                                    .onChange(of: self.mlStr) {
+                                        self.dripRate = 0
+                                        self.actionRecalculateRight()
+                                    }
+                                    .padding()
+                                    .background(self.colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
 #if os(iOS)
-                                .keyboardType(.numberPad)
+                                    .keyboardType(.numberPad)
 #endif
+                            }
                         }
                         
-                        Button {
-                            self.actionRecalculate()
-                        } label: {
-                            HStack(alignment: .top) {
-                                Spacer()
-                                Text("Calculate")
-                                Spacer()
+                        HStack {
+                            Button {
+                                self.actionRecalculate()
+                            } label: {
+                                HStack(alignment: .top) {
+                                    Spacer()
+                                    Text("Calculate")
+                                    Spacer()
+                                }
+                                .padding()
+                                .background(self.min > 0 && self.ml > 0 ? .green : .gray)
+                                .disabled(self.min > 0 && self.ml > 0)
+                                .bold()
+                                .foregroundStyle(.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .shadow(radius: 3, y: 3)
                             }
-                            .padding()
-                            .background(.green)
-                            .bold()
-                            .foregroundStyle(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .shadow(radius: 3, y: 3)
+                            
+                            Button {
+                                self.min = 0
+                                self.gttsPerMin = 0
+                                self.ml = 0
+                                self.gttsPerMinStr = ""
+                                self.mlStr = ""
+                                self.minStr = ""
+                                self.calculationLeft.append(Line(text: "gtts/min * min"))
+                                self.calculationRight.append(Line(text: "gtts/mL * mL"))
+                            } label: {
+                                Image(systemName: "arrow.trianglehead.clockwise")
+                                    .padding()
+                                    .background(.red)
+                                    .bold()
+                                    .foregroundStyle(.white)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .shadow(radius: 3, y: 3)
+                            }
                         }
                     }
                     .padding()
@@ -295,20 +338,20 @@ public struct Calculator: Identifiable {
                             Text("DRIP RATE")
                                 .font(.caption)
                             Spacer()
-                            Text(String(format: "%.0f/min", self.dripRate))
+                            Text(String(format: "%.0f gtts/min", self.dripRate))
                         }
                         .foregroundStyle(.yellow)
                         
                         HStack {
                             Spacer()
-                            Text(String(format: "%.1f/15s", self.dripRate / 4))
+                            Text(String(format: "%.1f gtts/15s", self.dripRate / 4))
                         }
                         .foregroundStyle(.yellow)
                         
                         if (self.dripRate / 60) > 1 {
                             HStack {
                                 Spacer()
-                                Text(String(format: "%.1f/sec", self.dripRate / 60))
+                                Text(String(format: "%.1f gtt/sec", self.dripRate / 60))
                             }
                             .foregroundStyle(.yellow)
                         }
