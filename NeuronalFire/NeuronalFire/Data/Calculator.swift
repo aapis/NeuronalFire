@@ -423,14 +423,15 @@ public struct Calculator: Identifiable {
         @State private var systolicBpStr: String = "" // @TODO: make obsolete by implementing a TextField that supports Ints
         @State private var diastolicBp: Double = 0
         @State private var diastolicBpStr: String = "" // @TODO: make obsolete by implementing a TextField that supports Ints
-        @State private var result: Double = 0.0
+        @State private var result: Double = 0
         @State private var map: Double = 0
+        @State private var pulsePressure: Double = 0
         @FocusState private var focused: Bool
-        private var columns: [GridItem] { return Array(repeating: GridItem(.flexible(), spacing: 1), count: 2) }
 
         var body: some View {
             VStack(alignment: .leading, spacing: 0) {
                 PageHeader(icon: "function", title: "Shock Index")
+                Screen(result: self.$result, map: self.$map, pulsePressure: self.$pulsePressure)
                 ScrollView(.vertical) {
                     VStack {
                         ZStack(alignment: .trailing) {
@@ -513,23 +514,6 @@ public struct Calculator: Identifiable {
                                 }
                             }
                         }
-                        
-                        VStack {
-                            LazyVGrid(columns: self.columns, alignment: .leading) {
-                                Text("Shock Index")
-                                Text("MAP")
-                            }
-                            LazyVGrid(columns: self.columns, alignment: .leading) {
-                                Text(String(format: "%.2f", self.result))
-                                    .foregroundStyle(self.result == 0.0 ? .gray : self.result > 0.7 ? .yellow : .green)
-                                Text(String(format: "%.0f", self.map))
-                                    .foregroundStyle(.gray)
-                            }
-                        }
-                        .padding()
-                        .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
-                        .background(self.colourScheme == .dark ? .neuronalGreen.opacity(0.6) : .neuronalPurple.opacity(0.6))
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                     .padding()
                     Spacer()
@@ -538,6 +522,42 @@ public struct Calculator: Identifiable {
             .background(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
             .onAppear(perform: self.actionOnAppear)
             .scrollDismissesKeyboard(.immediately)
+        }
+        
+        struct Screen: View {
+            @Environment(\.colorScheme) var colourScheme
+            @Binding public var result: Double
+            @Binding public var map: Double
+            @Binding public var pulsePressure: Double
+
+            var body: some View {
+                VStack {
+                    HStack {
+                        Text("Shock Index".uppercased())
+                            .font(.caption)
+                        Spacer()
+                        Text(String(format: "%.2f", self.result))
+                            .foregroundStyle(self.result == 0.0 ? .gray : self.result > 0.7 ? .yellow : .green)
+                    }
+                    HStack {
+                        Text("Mean Arterial Pressure (MAP)".uppercased())
+                            .font(.caption)
+                        Spacer()
+                        Text(String(format: "%.0f", self.map))
+                            .foregroundStyle(.gray)
+                    }
+                    HStack {
+                        Text("Pulse pressure".uppercased())
+                            .font(.caption)
+                        Spacer()
+                        Text(String(format: "%.0f", self.pulsePressure))
+                            .foregroundStyle(.gray)
+                    }
+                }
+                .padding()
+                .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                .background(self.colourScheme == .dark ? .neuronalGreen.opacity(0.6) : .neuronalPurple.opacity(0.6))
+            }
         }
     }
     
@@ -696,8 +716,8 @@ extension Calculator.ShockIndexView {
                 
                 if let fDiastolic = Double(self.diastolicBpStr) {
                     self.diastolicBp = fDiastolic
-                    let pulsePressure = self.systolicBp - self.diastolicBp
-                    self.map = self.diastolicBp + Double(pulsePressure / 3)
+                    self.pulsePressure = self.systolicBp - self.diastolicBp
+                    self.map = self.diastolicBp + Double(self.pulsePressure / 3)
                 }
             }
         }
