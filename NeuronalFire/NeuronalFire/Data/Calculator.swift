@@ -7,14 +7,16 @@
 
 import SwiftUI
 
+/// Units of measurement
 enum Units: CaseIterable {
-    case ml, mcg, g
+    case ml, mcg, g, mg
     
     var id: Int {
         switch self {
         case .ml: 0
         case .mcg: 1
         case .g: 2
+        case .mg: 3
         }
     }
     
@@ -23,10 +25,12 @@ enum Units: CaseIterable {
         case .ml: "ml"
         case .mcg: "mcg"
         case .g: "g"
+        case .mg: "mg"
         }
     }
 }
 
+/// Different drop sets and their gtts/ml rates
 enum DropSets: CaseIterable {
     case d10, d20, d60
     
@@ -46,6 +50,56 @@ enum DropSets: CaseIterable {
         }
     }
 }
+
+/// Relevant scope of practice for a given treatment or medication
+enum Scope {
+    case bls, als
+}
+
+/// Rough age ranges
+enum AgeGroup {
+    case adult, peds, neonate
+}
+
+enum Route {
+    case iv, io, im, sl, sc, intranasal
+    
+    var label: String {
+        switch self {
+        case .iv: "IV"
+        case .io: "IO"
+        case .im: "IM"
+        case .sl: "SL"
+        case .sc: "SC"
+        case .intranasal: "IN"
+        }
+    }
+}
+
+/// Defines a medication
+public struct Medication: Identifiable {
+    public var id: UUID = UUID()
+    var generic: String
+    var trade: String? = nil
+    var dose: Double
+    var unit: Units = .mg
+    var max: Double = 0
+    var route: Route = .iv
+    var scope: Scope = .bls
+    var age: AgeGroup = .adult
+}
+
+/// Doses, medications and specific conditions only accurate for those following AHS (Alberta Health Services) protocols
+public var formulary: [Medication] = [
+    Medication(generic: "naloxone", trade: "Narcan", dose: 0.1, max: 2, route: .iv, age: .peds),
+    Medication(generic: "ibuprofen", trade: "Advil", dose: 400, max: 1200), // @TODO: add support for temp conditions changing dose
+    Medication(generic: "epinepherine", trade: "Adrenalin", dose: 0.5, max: 0.5, age: .adult),
+    Medication(generic: "epinepherine", trade: "Adrenalin", dose: 0.01, max: 0.3, age: .peds),
+    Medication(generic: "diphenhydramine", trade: "Benadryl", dose: 1, max: 50),
+    Medication(generic: "diphenhydramine", trade: "Benadryl", dose: 1, max: 50, age: .peds),
+    Medication(generic: "salbutamol sulfate (neb)", trade: "Ventolin", dose: 0.15, max: 5000, age: .peds),
+    Medication(generic: "0.9% sodium chloride", trade: "Saline", dose: 20, unit: .ml, max: 3000, age: .adult)
+]
 
 public struct Calculator: Identifiable {
     public var id: UUID = UUID()
@@ -163,9 +217,6 @@ public struct Calculator: Identifiable {
         @State private var resultLeft: Double = 0
         @State private var resultRight: Double = 0
         @State private var dripRate: Double = 0
-        @State private var calculationSteps: [Line] = [
-            Line(text: "gtts/min * min = gtts/mL * mL")
-        ]
         @State private var calculationLeft: [Line] = []
         @State private var calculationRight: [Line] = []
         @State private var selectedDropSet: DropSets = .d10
@@ -496,48 +547,133 @@ public struct Calculator: Identifiable {
         @State private var weightStr: String = "" // @TODO: make obsolete by implementing a TextField that supports Ints
         @State private var pounds: Double = 0
         @State private var kilograms: Double = 0
+        @State private var selectedAgeGroup: AgeGroup = .adult
         @FocusState private var focused: Bool
 
         var body: some View {
             VStack(alignment: .leading, spacing: 0) {
-                PageHeader(icon: "function", title: "LBS to KG")
-                VStack {
-                    TextField("", text: self.$weightStr, prompt: Text("Weight").foregroundStyle(.gray))
-                        .onChange(of: self.weightStr) {
-                            self.actionRecalculate()
-                        }
-                        .padding()
-                        .background(self.colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                PageHeader(icon: "function", title: "Weight-based")
+                Screen(pounds: self.$pounds, kilograms: self.$kilograms)
+                ScrollView(.vertical) {
+                    VStack(alignment: .leading) {
+                        VStack(alignment: .leading) {
+                            Text("Weight in pounds")
+                                .font(.caption)
+                            TextField("", text: self.$weightStr, prompt: Text("Weight").foregroundStyle(.gray))
+                                .onChange(of: self.weightStr) {
+                                    self.actionRecalculate()
+                                }
+                                .padding()
+                                .background(self.colourScheme == .dark ? .neuronalGreen : .neuronalPurple)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
 #if os(iOS)
-                        .keyboardType(.numberPad)
+                                .keyboardType(.numberPad)
 #endif
-                        .focused(self.$focused)
-                    VStack {
-                        HStack {
-                            Text("Pounds")
-                            Spacer()
-                            Text(String(format: "%.1f", self.pounds))
-                                .foregroundStyle(.yellow)
+                                .focused(self.$focused)
                         }
-                        HStack {
-                            Text("Kilograms")
-                            Spacer()
-                            Text(String(format: "%.1f", self.kilograms))
-                                .foregroundStyle(.yellow)
-                        }
+                        .padding(.bottom)
+                        WeightedDoseTable(selectedAgeGroup: self.$selectedAgeGroup, kilograms: self.$kilograms)
                     }
                     .padding()
-                    .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
-                    .background(self.colourScheme == .dark ? .neuronalGreen.opacity(0.6) : .neuronalPurple.opacity(0.6))
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
-                .padding()
+                .scrollDismissesKeyboard(.immediately)
                 Spacer()
             }
             .background(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
             .onAppear(perform: self.actionOnAppear)
+        }
+        
+        struct Screen: View {
+            @Environment(\.colorScheme) var colourScheme
+            @Binding public var pounds: Double
+            @Binding public var kilograms: Double
+            
+            var body: some View {
+                VStack {
+                    HStack {
+                        Text("Pounds".uppercased())
+                            .font(.caption)
+                        Spacer()
+                        Text(String(format: "%.1flb", self.pounds))
+                            .foregroundStyle(.yellow)
+                    }
+                    HStack {
+                        Text("Kilograms".uppercased())
+                            .font(.caption)
+                        Spacer()
+                        Text(String(format: "%.1fkg", self.kilograms))
+                            .foregroundStyle(.yellow)
+                    }
+                }
+                .padding()
+                .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                .background(self.colourScheme == .dark ? .neuronalGreen.opacity(0.6) : .neuronalPurple.opacity(0.6))
+            }
+        }
+        
+        struct WeightedDoseTable: View {
+            @Environment(\.colorScheme) var colourScheme
+            @Binding public var selectedAgeGroup: AgeGroup
+            @Binding public var kilograms: Double
+
+            var body: some View {
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(spacing: 0) {
+                        Button {
+                            self.selectedAgeGroup = .adult
+                        } label: {
+                            HStack {
+                                Image(systemName: "figure.stand.dress")
+                                Text("Adult")
+                            }
+                            .padding(8)
+                            .background(self.selectedAgeGroup == .adult ? .orange : self.colourScheme == .dark ? .neuronalGreen.opacity(0.5) : .neuronalPurple.opacity(0.5))
+                            .foregroundStyle(self.selectedAgeGroup == .adult ? .white : .neuronalGreen)
+                        }
+                        .buttonStyle(.plain)
+                        
+                        Button {
+                            self.selectedAgeGroup = .peds
+                        } label: {
+                            HStack {
+                                Image(systemName: "figure.child")
+                                Text("Pediatrics")
+                            }
+                            .padding(8)
+                            .background(self.selectedAgeGroup == .peds ? .orange : self.colourScheme == .dark ? .neuronalGreen.opacity(0.5) : .neuronalPurple.opacity(0.5))
+                            .foregroundStyle(self.selectedAgeGroup == .peds ? .white : .neuronalGreen)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    .clipShape(UnevenRoundedRectangle(topLeadingRadius: 10, topTrailingRadius: 10))
+                    
+                    VStack(alignment: .leading, spacing: 1) {
+                        ForEach(formulary.filter({$0.age == self.selectedAgeGroup}).sorted(by: {$0.trade ?? "" < $1.trade ?? ""})) { med in
+                            HStack(alignment: .top) {
+                                if med.trade != nil {
+                                    Text(String(format: "%@ (%@)", med.trade!, med.generic))
+                                } else {
+                                    Text(med.generic)
+                                }
+                                Spacer()
+                                let calc = (med.dose * self.kilograms)
+                                if calc > med.max {
+                                    Text(String(format: "%.1f%@", med.max, med.unit.label))
+                                        .foregroundStyle(calc > 0 ? .yellow : self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                                } else {
+                                    Text(String(format: "%.1f%@", (med.dose * self.kilograms), med.unit.label))
+                                        .foregroundStyle(calc > 0 ? .yellow : self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                                }
+                            }
+                            .padding(8)
+                            .background(self.colourScheme == .dark ? .neuronalGreen.opacity(0.5) : .neuronalPurple.opacity(0.5))
+                            .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                        }
+                    }
+                    .clipShape(UnevenRoundedRectangle(bottomLeadingRadius: 10, bottomTrailingRadius: 10, topTrailingRadius: 10))
+                }
+            }
         }
     }
 }
