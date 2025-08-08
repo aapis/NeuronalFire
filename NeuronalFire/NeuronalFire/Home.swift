@@ -31,7 +31,7 @@ struct Home: View {
             view: AnyView(Calculator.ShockIndexView())
         ),
         Calculator(
-            label: "LBS to KG",
+            label: "Weight-based Doses",
             view: AnyView(Calculator.PoundToKilosView())
         )
     ]
