@@ -101,7 +101,7 @@ public var formulary: [Medication] = [
     Medication(generic: "0.9% sodium chloride", trade: "Saline", dose: 20, unit: .ml, max: 3000, age: .adult)
 ]
 
-public struct Calculator: Identifiable {
+public struct Page: Identifiable {
     public var id: UUID = UUID()
     var label: String
     var icon: String = "function"
@@ -698,7 +698,7 @@ public struct Calculator: Identifiable {
     }
 }
 
-extension Calculator.ShockIndexView {
+extension Page.ShockIndexView {
     /// Fires on load
     /// - Returns: Void
     private func actionOnAppear() -> Void {
@@ -724,7 +724,7 @@ extension Calculator.ShockIndexView {
     }
 }
 
-extension Calculator.MedicationDoseView {
+extension Page.MedicationDoseView {
     /// Fires on load
     /// - Returns: Void
     private func actionOnAppear() -> Void {
@@ -752,7 +752,7 @@ extension Calculator.MedicationDoseView {
     }
 }
 
-extension Calculator.PoundToKilosView {
+extension Page.PoundToKilosView {
     /// Fires on load
     /// - Returns: Void
     private func actionOnAppear() -> Void {
@@ -774,7 +774,7 @@ extension Calculator.PoundToKilosView {
     }
 }
 
-extension Calculator.DripRateView {
+extension Page.DripRateView {
     /// Fires on load
     /// - Returns: Void
     private func actionOnAppear() -> Void {

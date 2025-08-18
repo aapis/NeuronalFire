@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		532A32082C91F71F00728D5A /* PatientAssessmentViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532A32072C91F71F00728D5A /* PatientAssessmentViews.swift */; };
+		5337805F2E51420A0058E43C /* Differential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5337805E2E5141F80058E43C /* Differential.swift */; };
+		533780622E5143760058E43C /* DifferentialExplorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533780612E5143730058E43C /* DifferentialExplorer.swift */; };
 		535E48A92C815925005C241F /* NeuronalFireApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48A82C815925005C241F /* NeuronalFireApp.swift */; };
 		535E48AB2C815925005C241F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48AA2C815925005C241F /* ContentView.swift */; };
 		535E48AD2C815925005C241F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E48AC2C815925005C241F /* Item.swift */; };
@@ -49,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		532A32072C91F71F00728D5A /* PatientAssessmentViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAssessmentViews.swift; sourceTree = "<group>"; };
+		5337805E2E5141F80058E43C /* Differential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Differential.swift; sourceTree = "<group>"; };
+		533780612E5143730058E43C /* DifferentialExplorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferentialExplorer.swift; sourceTree = "<group>"; };
 		535E48A52C815925005C241F /* NeuronalFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeuronalFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		535E48A82C815925005C241F /* NeuronalFireApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuronalFireApp.swift; sourceTree = "<group>"; };
 		535E48AA2C815925005C241F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +110,14 @@
 				532A32072C91F71F00728D5A /* PatientAssessmentViews.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		533780602E5143680058E43C /* DifferentialExplorer */ = {
+			isa = PBXGroup;
+			children = (
+				533780612E5143730058E43C /* DifferentialExplorer.swift */,
+			);
+			path = DifferentialExplorer;
 			sourceTree = "<group>";
 		};
 		535E489C2C815925005C241F = {
@@ -174,6 +186,7 @@
 		535E48D72C8159D6005C241F /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				533780602E5143680058E43C /* DifferentialExplorer */,
 				538665862DA344C900618D4E /* LAMSCalculator */,
 				53F03DDE2D9F7F4800F34041 /* Medmath */,
 				5383E2692D7F662900B17F4F /* Shared */,
@@ -211,6 +224,7 @@
 		536B8E882C8FA654006722A6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5337805E2E5141F80058E43C /* Differential.swift */,
 				536739E02E3C5FB100EA58C4 /* Calculator.swift */,
 				5383E2672D7F61E300B17F4F /* Terms.swift */,
 				536B8E8B2C8FA9A3006722A6 /* Scenario.swift */,
@@ -382,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				535E48AB2C815925005C241F /* ContentView.swift in Sources */,
+				533780622E5143760058E43C /* DifferentialExplorer.swift in Sources */,
 				535E48AD2C815925005C241F /* Item.swift in Sources */,
 				5383E26B2D7F663500B17F4F /* PageHeader.swift in Sources */,
 				535E48D62C81598A005C241F /* Home.swift in Sources */,
@@ -394,6 +409,7 @@
 				538665882DA344D500618D4E /* LAMSCalculator.swift in Sources */,
 				5383E2662D7F61D100B17F4F /* Acronyms.swift in Sources */,
 				532A32082C91F71F00728D5A /* PatientAssessmentViews.swift in Sources */,
+				5337805F2E51420A0058E43C /* Differential.swift in Sources */,
 				536B8E8C2C8FA9A5006722A6 /* Scenario.swift in Sources */,
 				53621FD52C83A3F100CA4BF5 /* View.swift in Sources */,
 				535E48A92C815925005C241F /* NeuronalFireApp.swift in Sources */,

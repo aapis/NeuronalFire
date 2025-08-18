@@ -9,30 +9,51 @@ import SwiftUI
 
 struct Home: View {
     @Environment(\.colorScheme) var colourScheme
-    private var calculators: [Calculator] = [
-        Calculator(
+    private var references: [Page] = [
+        Page(
+            label: "Acronyms",
+            icon: "textformat.superscript",
+            view: AnyView(Terms())
+        ),
+        Page(
+            label: "Differential Explorer",
+            icon: "folder",
+            view: AnyView(DifferentialExplorer())
+        ),
+        Page(
+            label: "Formulary Explorer",
+            icon: "folder"
+        ),
+        Page(
+            label: "Patient Assessment Guide",
+            icon: "stethoscope",
+            view: AnyView(PatientAssessmentGuide())
+        )
+    ]
+    private var calculators: [Page] = [
+        Page(
             label: "GCS",
             view: AnyView(GCSCalculator())
         ),
-        Calculator(
+        Page(
             label: "LAMS",
             view: AnyView(LAMSCalculator())
         ),
-        Calculator(
+        Page(
             label: "Medication Dose",
-            view: AnyView(Calculator.MedicationDoseView())
+            view: AnyView(Page.MedicationDoseView())
         ),
-        Calculator(
+        Page(
             label: "Drip Rate",
-            view: AnyView(Calculator.DripRateView())
+            view: AnyView(Page.DripRateView())
         ),
-        Calculator(
+        Page(
             label: "Shock Index",
-            view: AnyView(Calculator.ShockIndexView())
+            view: AnyView(Page.ShockIndexView())
         ),
-        Calculator(
+        Page(
             label: "Weight-based Doses",
-            view: AnyView(Calculator.PoundToKilosView())
+            view: AnyView(Page.PoundToKilosView())
         )
     ]
 
@@ -53,29 +74,19 @@ struct Home: View {
 
                 List {
                     Section("Reference") {
-                        NavigationLink {
-                            Terms()
-                        } label: {
-                            HStack(alignment: .center) {
-                                Image(systemName: "textformat.superscript")
-                                    .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
-                                Text("Acronyms")
+                        ForEach(self.references) { ref in
+                            NavigationLink {
+                                ref.view
+                            } label: {
+                                HStack(alignment: .center) {
+                                    Image(systemName: ref.icon)
+                                        .foregroundStyle(self.colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
+                                    Text(ref.label)
+                                }
                             }
+                            .listRowBackground(self.colourScheme == .dark ? Color.neuronalGreen : Color.white)
                         }
-                        .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
-
-                        NavigationLink {
-                            PatientAssessmentGuide()
-                        } label: {
-                            HStack(alignment: .center) {
-                                Image(systemName: "stethoscope")
-                                    .foregroundStyle(colourScheme == .dark ? .neuronalPurple : .neuronalGreen)
-                                Text("Patient Assessment Guide")
-                            }
-                        }
-                        .listRowBackground(colourScheme == .dark ? Color.neuronalGreen : Color.white)
                     }
-
                     Section("Calculators") {
                         ForEach(self.calculators) { calc in
                             NavigationLink {

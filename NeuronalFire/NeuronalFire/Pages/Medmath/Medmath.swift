@@ -5,6 +5,7 @@
 //  Created by Ryan Priebe on 2025-04-03.
 //
 
+// @TODO: This entire file can be deleted
 import SwiftUI
 
 public enum MedMathTab {
@@ -13,22 +14,22 @@ public enum MedMathTab {
 
 struct Medmath: View {
     @Environment(\.colorScheme) var colourScheme
-    private var calculators: [Calculator] = [
-        Calculator(
+    private var calculators: [Page] = [
+        Page(
             label: "Medication Dose",
-            view: AnyView(Calculator.MedicationDoseView())
+            view: AnyView(Page.MedicationDoseView())
         ),
-        Calculator(
+        Page(
             label: "Drip Rate",
-            view: AnyView(Calculator.DripRateView())
+            view: AnyView(Page.DripRateView())
         ),
-        Calculator(
+        Page(
             label: "Shock Index",
-            view: AnyView(Calculator.ShockIndexView())
+            view: AnyView(Page.ShockIndexView())
         ),
-        Calculator(
+        Page(
             label: "LBS to KG",
-            view: AnyView(Calculator.PoundToKilosView())
+            view: AnyView(Page.PoundToKilosView())
         )
     ]
 
@@ -191,11 +192,11 @@ struct Medmath2: View {
     
     struct CalculatorList: View {
         @Environment(\.colorScheme) var colourScheme
-        private var calculators: [Calculator] = [
-            Calculator(label: "Medication Dose"),
-            Calculator(label: "Drip Rate"),
-            Calculator(label: "Shock Index"),
-            Calculator(label: "LBS to KG")
+        private var calculators: [Page] = [
+            Page(label: "Medication Dose"),
+            Page(label: "Drip Rate"),
+            Page(label: "Shock Index"),
+            Page(label: "LBS to KG")
         ]
         
         var body: some View {
